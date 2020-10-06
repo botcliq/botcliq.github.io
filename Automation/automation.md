@@ -4,5 +4,4 @@
 
 layout: page
 title: automation
-permalink:/Automation/
 ---
