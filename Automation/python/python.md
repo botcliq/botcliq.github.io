@@ -4,5 +4,5 @@
 
 layout: page
 title: python
-permalink:/automation/python
+permalink:/Automation/python
 ---
