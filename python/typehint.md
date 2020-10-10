@@ -1,3 +1,10 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: page
+title: python
+---
 #Python Type Hints
 Its new feature in python language. 
 Python PEP 484 introduced type annotation notation types in Python 3.
