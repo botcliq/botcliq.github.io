@@ -3,10 +3,9 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: post
-title: typehint
+title: Python Type Hints
 catergories: python
 ---
-# Python Type Hints
 Its new feature in python language. 
 Python PEP 484 introduced type annotation notation types in Python 3.
 *Type hinting is literally what the words mean, you hint the type of the object(s) you're using.*
@@ -19,17 +18,21 @@ Python PEP 484 introduced type annotation notation types in Python 3.
 
 ### Why Type Hints?
 	1. Helps Type Checkers: 
-	 By hinting at what type you want the object to be the type checker can easily detect if, for instance, you're passing an object with a type that isn't expected.
+	 By hinting at what type you want the object to be the type checker can easily detect if, for instance, you're passing
+	 an object with a type that isn't expected.
 	2. Helps with documentation: 
 	 A third person viewing your code will know what is expected where, ergo, how to use it without getting them TypeErrors.
 	3. Helps IDEs develop more accurate and robust tools: 
-	 Development Environments will be better suited at suggesting appropriate methods when know what type your object is. You have probably experienced this with some IDE at some point, hitting the . and having methods/attributes pop up which aren't defined for an object.
+	 Development Environments will be better suited at suggesting appropriate methods when know what type your object is. You
+	 have probably experienced this with some IDE at some point, hitting the . and having methods/attributes pop up which 
+	 aren't defined for an object.
 
 ### Why use Static Type Checkers?
 	1. Find bugs sooner: 
 	 This is self evident, I believe.
 	2. The larger your project the more you need it: 
-	 Again, makes sense. Static languages offer a robustness and control that dynamic languages lack. The bigger and more complex your application becomes the more control and predictability (from a behavioral aspect) you require.
+	 Again, makes sense. Static languages offer a robustness and control that dynamic languages lack. The bigger and more 
+	 complex your application becomes the more control and predictability (from a behavioral aspect) you require.
 
 ## Variables
 > \# This is how you declare the type of a variable type in Python 3.6
