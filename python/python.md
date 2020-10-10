@@ -5,6 +5,8 @@ permalink: /python/
 order: 4
 ---
 
+New Updates:
+
 <div id="archives">
 {% for category in site.categories %}
   <div class="archive-group">
