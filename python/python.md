@@ -2,6 +2,7 @@
 layout: page
 title: python
 permalink: /python/
+order: 4
 ---
 
 <div id="archives">
