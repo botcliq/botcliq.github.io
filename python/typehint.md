@@ -4,7 +4,7 @@
 
 layout: post
 title: Python Type Hints
-catergories: python
+categories: python
 ---
 Its new feature in python language. 
 Python PEP 484 introduced type annotation notation types in Python 3.
