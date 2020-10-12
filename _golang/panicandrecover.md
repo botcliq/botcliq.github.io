@@ -19,9 +19,8 @@ Go doesn't support exception throwing and catching, instead explicit error handl
  * If a panicking goroutine exits without being recovered, it will make the whole program crash.
 
 The built-in panic and recover functions are declared as
-  > func panic(v interface{})
-  
-  > func recover() interface{}
+	' func panic(v interface{}) '
+	' func recover() interface{} '
   
 Two things to remember is :
   * The value returned by a recover function call is the value a panic function call consumed.
