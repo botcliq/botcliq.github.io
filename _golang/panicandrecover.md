@@ -44,7 +44,7 @@ Panic Uses:
    When a panic is detected in a goroutine, we can create a new goroutine for it. An example:
    package main
 
-` import "log"
+```import "log"
 `  import "time"
 `
 `  func shouldNotExit() {
@@ -76,6 +76,6 @@ Panic Uses:
 `	  go NeverExit("job#B", shouldNotExit)
 `	  select{} // block here for ever
 `  }
-`  
+```  
   
   
