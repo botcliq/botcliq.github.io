@@ -19,8 +19,11 @@ Go doesn't support exception throwing and catching, instead explicit error handl
  * If a panicking goroutine exits without being recovered, it will make the whole program crash.
 
 The built-in panic and recover functions are declared as
-	` func panic(v interface{}) `
-	` func recover() interface{} `
+
+```txt
+     func panic(v interface{}) 
+     func recover() interface{} 
+```
   
 Two things to remember is :
   * The value returned by a recover function call is the value a panic function call consumed.
@@ -28,12 +31,14 @@ Two things to remember is :
   
 Panic Uses:
  * Go runtime will create panics for some circumstances, such as dividing an integer by zero. For
-    ` package main
-    `
-    ` func main() {
-    `   a, b := 1, 0
-    `	_ = a/b
-    ` }
+```txt
+     package main
+    
+     func main() {
+       a, b := 1, 0
+    	_ = a/b
+     }
+```
     
  ** For the standard Go compiler, some fatal errors, such as stack overflow and out of memory are not recoverable. Once they occur, program will crash. **
  
@@ -77,6 +82,39 @@ Panic Uses:
 	  go NeverExit("job#B", shouldNotExit)
 	  select{} // block here for ever
   }
-```  
-  
+```
+ * Use panic/recover Calls to Reduce Error Checks.
+ ```txt
+    func doSomething() (err error) {
+	defer func() {
+		err = recover()
+	}()
+
+	doStep1()
+	doStep2()
+	doStep3()
+	doStep4()
+	doStep5()
+
+	return
+    }
+ 
+   // In reality, the prototypes of the doStepN functions
+   // might be different. For each of them,
+   // * panic with nil for success and no needs to continue.
+   // * panic with error for failure and no needs to contine.
+   // * not panic for continuing.
+   func doStepN() {
+	...
+	if err != nil {
+		panic(err)
+	}
+	...
+	if done {
+		panic(nil)
+	}
+   }
+```
+
+
   
