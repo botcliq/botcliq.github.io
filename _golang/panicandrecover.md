@@ -5,7 +5,7 @@
 title: Panic And Revover
 layout: page
 description: This is detailed page having info exception handling in golang.
-link: https://botcliq.tech/panicrecover/
+link: https://botcliq.tech/golang/panicrecover/
 ---
 
 Go doesn't support exception throwing and catching, instead explicit error handling is preferred to use in Go programming. In fact, Go supports an exception throw/catch alike mechanism. The mechanism is called panic/recover.
@@ -19,8 +19,8 @@ Go doesn't support exception throwing and catching, instead explicit error handl
  * If a panicking goroutine exits without being recovered, it will make the whole program crash.
 
 The built-in panic and recover functions are declared as
-	' func panic(v interface{}) '
-	' func recover() interface{} '
+	` func panic(v interface{}) `
+	` func recover() interface{} `
   
 Two things to remember is :
   * The value returned by a recover function call is the value a panic function call consumed.
@@ -28,12 +28,12 @@ Two things to remember is :
   
 Panic Uses:
  * Go runtime will create panics for some circumstances, such as dividing an integer by zero. For
-    > package main
-    >
-    > func main() {
-	  > a, b := 1, 0
-    >	_ = a/b
-    > }
+    ` package main
+    `
+    ` func main() {
+    `   a, b := 1, 0
+    `	_ = a/b
+    ` }
     
  ** For the standard Go compiler, some fatal errors, such as stack overflow and out of memory are not recoverable. Once they occur, program will crash. **
  
@@ -44,38 +44,38 @@ Panic Uses:
    When a panic is detected in a goroutine, we can create a new goroutine for it. An example:
    package main
 
-`` import "log"
-  import "time"
-
-  func shouldNotExit() {
-	  for {
-		  // Simulate a workload.
-		  time.Sleep(time.Second)
-
-		  // Simulate an unexpected panic.
-		  if time.Now().UnixNano() & 0x3 == 0 {
-			panic("unexpected situation")
-		  }
-	  }
-  }
-
-  func NeverExit(name string, f func()) {
-	  defer func() {
-		  if v := recover(); v != nil {
-			  // A panic is detected.
-			  log.Println(name, "is crashed. Restart it now.")
-			  go NeverExit(name, f) // restart
-	  	}
-	  }()
-	  f()
-  }
-  
-  func main() {
-	  log.SetFlags(0)
-	  go NeverExit("job#A", shouldNotExit)
-	  go NeverExit("job#B", shouldNotExit)
-	  select{} // block here for ever
-  }
-  ``
+` import "log"
+`  import "time"
+`
+`  func shouldNotExit() {
+`	  for {
+`		  // Simulate a workload.
+`		  time.Sleep(time.Second)
+`
+`		  // Simulate an unexpected panic.
+`		  if time.Now().UnixNano() & 0x3 == 0 {
+`			panic("unexpected situation")
+`		  }
+`	  }
+` }
+`
+`  func NeverExit(name string, f func()) {
+`	  defer func() {
+`		  if v := recover(); v != nil {
+`			  // A panic is detected.
+`			  log.Println(name, "is crashed. Restart it now.")
+`			  go NeverExit(name, f) // restart
+`	  	}
+`	  }()
+`	  f()
+`  }
+`  
+`  func main() {
+`	  log.SetFlags(0)
+`	  go NeverExit("job#A", shouldNotExit)
+`	  go NeverExit("job#B", shouldNotExit)
+`	  select{} // block here for ever
+`  }
+`  
   
   
