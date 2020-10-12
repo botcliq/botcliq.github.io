@@ -2,9 +2,10 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: post
 title: Python Type Hints
-lesson: 01
+layout: page
+description: This is detailed page having info regarding python type hints.
+link: https://botcliq.tech/thunder/
 ---
 Its new feature in python language. 
 Python PEP 484 introduced type annotation notation types in Python 3.
