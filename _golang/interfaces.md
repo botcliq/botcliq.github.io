@@ -96,7 +96,7 @@ func main() {
   In golang you can replace one structure implementing struct with the other struct of same interface.
 It can help us create structures that can help in mocking for test cases.
 
-# Misc:
+## Misc:
 ## Empty interface
 In some go code some function that takes in a parameter of the type interface{} and you might start to ask yourself,
 what the hell is that?
