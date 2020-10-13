@@ -36,7 +36,12 @@ collections:
   golang:
     output: true
     permalink: /golang/:path/
-
+  automation:
+    output: true
+    permalink: /automation/:path/
+  algorithm:
+    output: true
+    permalink: /algorithm/:path
 # Build settings
 theme: minima
 plugins:

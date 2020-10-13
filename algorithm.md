@@ -3,12 +3,12 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: page
-title: Golang
+title: Algorithm
 ---
 
 New Updates:
 
-{% for themes in site.golang %}
+{% for themes in site.algorithm %}
 
 <h2><a href="{{ themes.url }}">
   {{ themes.title }}</a></h2>
@@ -16,4 +16,3 @@ New Updates:
 <p class="post-excerpt">{{ themes.description | truncate: 160 }}</p>
 
 {% endfor %}
-
