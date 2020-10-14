@@ -125,7 +125,7 @@ func main() {
   out the door. The compiler no longer has the ability to tell you that you made a mistake and passed it the wrong data type.
   You are left to check for errors like that on your own, and you won’t be able to find any bugs until runtime.
  
- ## Type assertion
+## Type assertion
  We can find out the underlying dynamic value of an interface using the syntax i.(Type) where i is a variable of type interface
  and Type is a type that implements the interface.
  Go will check if dynamic type of i is identical to the Type and return the dynamic value is possible.
@@ -154,7 +154,7 @@ func main() {
  * How would we know if the underlying value of an interface implements any other interfaces? This is also possible using type assertion. 
  If Type in type assertion syntax is an interface, then Go will check if dynamic type of i implements interface Type.
  
- ## Type switches
+## Type switches
  A type switch is a construct that permits several type assertions in series.
 
 A type switch is like a regular switch statement, but the cases in a type switch specify types (not values), 
