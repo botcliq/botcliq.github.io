@@ -101,8 +101,8 @@ It can help us create structures that can help in mocking for test cases.
 In some go code some function that takes in a parameter of the type interface{} and you might start to ask yourself,
 what the hell is that?
 These are empty interfaces.
-**The empty interface type essentially describes no methods. It has no rules. And because of that, it follows that
-any and every object satisfies the empty interface.**
+* The empty interface type essentially describes no methods. It has no rules. And because of that, it follows that
+any and every object satisfies the empty interface.
 
 ```txt
   package main
@@ -120,10 +120,10 @@ func main() {
     fmt.Printf("%+v", person)
  }
 ```
-  **We need to be careful when using the empty interface, because by using the empty interface in code you are essentially 
+ * We need to be careful when using the empty interface, because by using the empty interface in code you are essentially 
   giving your compiler zero knowledge about the data coming in, so all of the benefits of a statically typed language go 
   out the door. The compiler no longer has the ability to tell you that you made a mistake and passed it the wrong data type.
-  You are left to check for errors like that on your own, and you won’t be able to find any bugs until runtime.**
+  You are left to check for errors like that on your own, and you won’t be able to find any bugs until runtime.
  
  ## Type assertion
  We can find out the underlying dynamic value of an interface using the syntax i.(Type) where i is a variable of type interface
