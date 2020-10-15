@@ -21,12 +21,12 @@ A function is a block of code that takes some input(s), does some processing on 
 ```txt 
     func main(){
     }
- ```
+```
  * You need to specify the type only once for multiple consecutive parameters of the same type
 ```txt
  func avg(x, y float64) float64 { }
 // Same as - func avg(x float64, y float64) float64 { }
- ```
+```
  * Functions with multiple return values.
 ```txt
     func getMulSum(i, j float64) (float64, float64) {
@@ -34,7 +34,7 @@ A function is a block of code that takes some input(s), does some processing on 
 	mul := i*j
 	return mul, sum
 }
- ```
+```
  * Returning an error value from a function
 ```txt
     package main
