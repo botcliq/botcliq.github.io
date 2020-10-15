@@ -17,7 +17,7 @@ A function is a block of code that takes some input(s), does some processing on 
 
 # Functions:
  * Function parameters and return type(s) are optional
- The main() function is an example of such a function -
+ The main() function is an example of such a function.
 ```txt 
     func main(){
     }
@@ -35,8 +35,8 @@ A function is a block of code that takes some input(s), does some processing on 
 	return mul, sum
   }
 ```
- * Returning an error value from a function
-```txt
+ * Returning an error value from a function.
+ ```txt
     package main
 
 import (
@@ -96,7 +96,7 @@ func main() {
     fmt.Println(sum(5,3,7))
     }
 ```
- * Go Closure
+ * Go Closure.
 ```txt
     package main
 
