@@ -7,7 +7,155 @@ layout: page
 description: This is detailed page having info on functions in golang.
 link: https://botcliq.tech/golang/functions/
 ---
+A function is a block of code that takes some input(s), does some processing on the input(s) and produces some output(s).
 
+* Go functions are first-class citizens. Functions can be assigned to variables, passed as arguments to functions or 
+ returned from functions. This makes the language more flexible. *
+
+* In Golang, we declare a function using the func keyword. A function has a name, a list of comma-separated input 
+ parameters along with their types, the result type(s), and a body.
+
+# Functions:
+ * Function parameters and return type(s) are optional
+ The main() function is an example of such a function -
+ ```txt 
+    func main(){
+    }
+ ```
+ * You need to specify the type only once for multiple consecutive parameters of the same type
+ ```txt
+ func avg(x, y float64) float64 { }
+// Same as - func avg(x float64, y float64) float64 { }
+ ```
+ *Functions with multiple return values.
+ ```txt
+    func getMulSum(i, j float64) (float64, float64) {
+	sum := i + j
+	mul := i*j
+	return mul, sum
+}
+ ```
+ * Returning an error value from a function
+ ```txt
+    package main
+
+import (
+   "fmt"
+)
+
+func main() {
+   id, err := ReturnId()
+
+   if err != nil {
+      fmt.Printf("ERROR: %s", err)
+      return
+   }
+
+   fmt.Printf("Id: %d\n", id)
+}
+
+func ReturnId() (id int,err  error) {
+   id = 10
+   if id == 10 {
+      err = fmt.Errorf("Invalid Id\n")
+      return
+   }
+   return
+}
+ ```
+ * Functions with named return values
+```txt
+  package main
+
+import "fmt"
+
+func sum(x, y, z int) (a, b int) {
+
+    a = x + y
+    b = y + x
+    return
+}
+
+func main() {
+    x, y := sum(10, 100)
+    fmt.Println(x, y, z)
+}
+```
+ * Go anonymous function.
+ We can create anonymous functions which do not have a name.
+ ```txt
+    package main
+
+    import "fmt"
+
+    func main() {
+
+    sum := func(a, b, c int) int {
+        return a + b + c
+    }
+    fmt.Println(sum(5,3,7))
+    }
+ ```
+ * Go Closure
+ ```txt
+    package main
+
+import "fmt"
+
+func intSeq() func() int {
+
+    i := 0
+    return func() int {
+        i++
+        return i
+    }
+}
+
+func main() {
+
+    nextInt := intSeq()
+
+    fmt.Println(nextInt())
+    fmt.Println(nextInt())
+    fmt.Println(nextInt())
+    fmt.Println(nextInt())
+
+    nextInt2 := intSeq()
+    fmt.Println(nextInt2())
+}
+ ```
+ * Go higher-order function
+ ```txt
+     package main
+import "fmt"
+
+func apply(x, y int, add func(int, int) int, sub func(int, int) int) (int, int) {
+    r1 := add(x, y)
+    r2 := sub(x, y)
+    return r1, r2
+}
+
+
+func main() {
+    x := 3
+    y := 4
+    add, sub := getAddSub()
+    r1, r2 := apply(x, y, add, sub)
+    fmt.Printf("%d + %d = %d\n", x, y, r1)
+    fmt.Printf("%d - %d = %d\n", x, y, r2)
+}
+
+func getAddSub() (func(int, int) int, func(int, int) int) {
+    add := func(x, y int) int {
+        return x + y
+    }
+    sub := func(x, y int) int {
+        return x - y
+    }
+    return add, sub
+}
+ ```
+ 
 # Variadic Functions
   Think of a function that can take any number of  arguments, it could be 0 , 1 or more.
 A variadic function is a function that accepts a variable number of arguments. 
