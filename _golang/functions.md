@@ -18,17 +18,17 @@ A function is a block of code that takes some input(s), does some processing on 
 # Functions:
  * Function parameters and return type(s) are optional
  The main() function is an example of such a function -
- ```txt 
+```txt 
     func main(){
     }
  ```
  * You need to specify the type only once for multiple consecutive parameters of the same type
- ```txt
+```txt
  func avg(x, y float64) float64 { }
 // Same as - func avg(x float64, y float64) float64 { }
  ```
  *Functions with multiple return values.
- ```txt
+```txt
     func getMulSum(i, j float64) (float64, float64) {
 	sum := i + j
 	mul := i*j
@@ -36,7 +36,7 @@ A function is a block of code that takes some input(s), does some processing on 
 }
  ```
  * Returning an error value from a function
- ```txt
+```txt
     package main
 
 import (
@@ -62,7 +62,7 @@ func ReturnId() (id int,err  error) {
    }
    return
 }
- ```
+```
  * Functions with named return values
 ```txt
   package main
@@ -83,7 +83,7 @@ func main() {
 ```
  * Go anonymous function.
  We can create anonymous functions which do not have a name.
- ```txt
+```txt
     package main
 
     import "fmt"
@@ -95,9 +95,9 @@ func main() {
     }
     fmt.Println(sum(5,3,7))
     }
- ```
+```
  * Go Closure
- ```txt
+```txt
     package main
 
 import "fmt"
@@ -123,9 +123,9 @@ func main() {
     nextInt2 := intSeq()
     fmt.Println(nextInt2())
 }
- ```
+```
  * Go higher-order function
- ```txt
+```txt
      package main
 import "fmt"
 
@@ -154,7 +154,7 @@ func getAddSub() (func(int, int) int, func(int, int) int) {
     }
     return add, sub
 }
- ```
+```
  
 # Variadic Functions
   Think of a function that can take any number of  arguments, it could be 0 , 1 or more.
