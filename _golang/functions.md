@@ -16,7 +16,7 @@ If the last parameter of a function definition is prefixed by ellipsis ..., then
 ## How to Make a Function Variadic.
   * If the last parameter of a function has type ...T it can be called with any number of trailing arguments of type T.
     You can only have one variadic parameter in a function, and it must be the last parameter defined in the function
-  '''txt
+'''txt
 package main
 
 import "fmt"
