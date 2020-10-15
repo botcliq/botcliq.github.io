@@ -25,7 +25,7 @@ A function is a block of code that takes some input(s), does some processing on 
  * You need to specify the type only once for multiple consecutive parameters of the same type
 ```txt
  func avg(x, y float64) float64 { }
-// Same as - func avg(x float64, y float64) float64 { }
+ //Same as - func avg(x float64, y float64) float64 { }
 ```
  * Functions with multiple return values.
 ```txt
@@ -33,7 +33,7 @@ A function is a block of code that takes some input(s), does some processing on 
 	sum := i + j
 	mul := i*j
 	return mul, sum
-}
+  }
 ```
  * Returning an error value from a function
 ```txt
@@ -199,16 +199,16 @@ Some examples of Variadic functions are:
    fmt.Println("This is the Print with additional args", 1, 2)
    '''
  * append is variadic.
-   ```txt
+```txt
    var buf []byte
    buf = append(buf, 'a', 'b')
    buf = append(buf, "cd"...)
    fmt.Println(buf) // [97 98 99 100]
-   ```
+```
 ## How is IT different from Slice Arguments:
  * There is no need to create a slice during each function call.
  * Creating empty slice not required in case of variadic function.
- ```txt
+```txt
  package main
  import fmt
  func Mul(nums []int) int {
@@ -223,7 +223,8 @@ func main()
     fmt.Println(Sum([]{}))        // 0
     fmt.Println(Sum([]{1, 2, 3})) // 6
 }
- ```
+```
+
 ## Exercise: 
   * what would be output of this code
   ```txt
