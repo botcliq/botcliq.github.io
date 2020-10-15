@@ -27,7 +27,7 @@ A function is a block of code that takes some input(s), does some processing on 
  func avg(x, y float64) float64 { }
 // Same as - func avg(x float64, y float64) float64 { }
  ```
- *Functions with multiple return values.
+ * Functions with multiple return values.
 ```txt
     func getMulSum(i, j float64) (float64, float64) {
 	sum := i + j
