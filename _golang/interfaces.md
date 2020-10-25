@@ -235,77 +235,79 @@ func main() {
 }
 ```
 ## Embedding interfaces
-In Go, an interface cannot implement other interfaces or extend them, but we can create a new interface by merging two or more interfaces. 
-*  In embedding, an interface can embed other interfaces or an interface can embed other interface’s method signatures in it.
-*  When an interface, embed other interfaces in it if we made any changes in the methods of the interfaces, then it will reflect in the embedded interface.
-*  You are allowed to embed any number of interfaces in a single interface.
+    
+    In Go, an interface cannot implement other interfaces or extend them, but we can create a new interface by merging two or more interfaces. 
+    *  In embedding, an interface can embed other interfaces or an interface can embed other interface’s method signatures in it.
+    *  When an interface, embed other interfaces in it if we made any changes in the methods of the interfaces, then it will reflect in the embedded interface.
+    *  You are allowed to embed any number of interfaces in a single interface.
 ```txt
-// Go program to illustrate the concept 
-// of the embedding interfaces 
-package main 
 
-import "fmt"
+    // Go program to illustrate the concept 
+    // of the embedding interfaces 
+    package main 
 
-// Interface 1 
-type AuthorDetails interface { 
+    import "fmt"
 
-	details() 
-} 
+    // Interface 1 
+    type AuthorDetails interface { 
 
-// Interface 2 
-type AuthorArticles interface { 
+    	details() 
+    } 
 
-	articles() 
-} 
+    // Interface 2 
+    type AuthorArticles interface { 
 
-// Interface 3 
+	    articles() 
+    } 
 
-// Interface 3 embedded with 
-// interface 1 and 2 
-type FinalDetails interface { 
+    // Interface 3 
 
-	AuthorDetails 
-	AuthorArticles 
-} 
+    // Interface 3 embedded with 
+    // interface 1 and 2 
+    type FinalDetails interface { 
 
-// Structure 
-type author struct { 
+	    AuthorDetails 
+	    AuthorArticles 
+    } 
 
-	a_name string 
-	branch string 
-	college string 
-	year	 int
-	salary int
-	particles int
-	tarticles int
-} 
+    // Structure 
+    type author struct { 
 
-// Implementing method of 
-// the interface 1 
-func (a author) details() { 
+	    a_name string 
+	    branch string 
+	    college string 
+	    year	 int
+	    salary int
+	    particles int
+	    tarticles int
+    } 
 
-	fmt.Printf("Author Name: %s", a.a_name) 
-	fmt.Printf("\nBranch: %s and passing year: %d", 
-								a.branch, a.year) 
-	fmt.Printf("\nCollege Name: %s", a.college) 
-	fmt.Printf("\nSalary: %d", a.salary) 
-	fmt.Printf("\nPublished articles: %d", a.particles) 
-} 
+    // Implementing method of 
+    // the interface 1 
+    func (a author) details() { 
+    
+	    fmt.Printf("Author Name: %s", a.a_name) 
+	    fmt.Printf("\nBranch: %s and passing year: %d", 
+    								a.branch, a.year) 
+	    fmt.Printf("\nCollege Name: %s", a.college) 
+	    fmt.Printf("\nSalary: %d", a.salary) 
+    	fmt.Printf("\nPublished articles: %d", a.particles) 
+    } 
 
-// Implementing method 
-// of the interface 2 
-func (a author) articles() { 
+    // Implementing method 
+    // of the interface 2 
+    func (a author) articles() { 
+    
+	    pendingarticles := a.tarticles - a.particles 
+	    fmt.Printf("\nPending articles: %d", pendingarticles) 
+    } 
+    
+    // Main value 
+    func main() { 
 
-	pendingarticles := a.tarticles - a.particles 
-	fmt.Printf("\nPending articles: %d", pendingarticles) 
-} 
-
-// Main value 
-func main() { 
-
-	// Assigning values 
-	// to the structure 
-	values := author{ 
+	    // Assigning values 
+	    // to the structure 
+	    values := author{ 
 		a_name: "Mickey", 
 		branch: "Computer science", 
 		college: "XYZ", 
@@ -313,15 +315,15 @@ func main() {
 		salary: 50000, 
 		particles: 209, 
 		tarticles: 309, 
-	} 
-
-	// Accessing the methods of 
-	// the interface 1 and 2 
-	// Using FinalDetails interface 
-	var f FinalDetails = values 
-	f.details() 
-	f.articles() 
-} 
+	    } 
+    
+    	// Accessing the methods of 
+	    // the interface 1 and 2 
+    	// Using FinalDetails interface 
+	    var f FinalDetails = values 
+    	f.details() 
+	    f.articles() 
+    } 
 ```
 
 ## Interface comparison
