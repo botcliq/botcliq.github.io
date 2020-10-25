@@ -1,4 +1,12 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
+title: Go channels
+layout: page
+description: This is detailed page having info on channels in golang.
+link: https://botcliq.tech/golang/channels/
+---
 
 Channels are Used in Goroutines but they can be of different types too:
 
