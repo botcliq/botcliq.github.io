@@ -1,4 +1,12 @@
-# Go Concurrency
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+title: Go Concurrency
+layout: page
+description: This is detailed page having info on concurrency in golang.
+link: https://botcliq.tech/golang/concurrency/
+---
  Go has built in concurrency support. That is supported by Go scheduler.
  Go works using M:N scheduler,
   - It schedules goroutines (lighter than os threads), i.e. M
