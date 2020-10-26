@@ -142,7 +142,49 @@ When you signal without data, it’s usually because:
 * A goroutine reports back they are done with no result.
 * A goroutine reports that it has completed processing and shut down.
 
+## Nil Channels
+A nil channel reacts to actions on it as follows:
+* Reading from a nil channel blocks forever
+* Sending to a nil channel blocks forever
+* closing a nil channel panics
 
+```txt
+
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func add(c chan int) {
+	sum := 0
+	t := time.NewTimer(time.Second)
+	for {
+		select {
+		case input := <-c:
+			sum = sum + input
+		case <-t.C:
+			c = nil
+			fmt.Println(sum)
+		}
+	}
+}
+
+func send(c chan int) {
+	for {
+		c <- rand.Intn(10)
+	}
+}
+
+func main() {
+	c := make(chan int)
+	go add(c)
+	go send(c)
+	time.Sleep(3 * time.Second)
+}
+```
 
 ## Signal Channels
 Channels in Go are a great way to communicate data between goroutines, but you can also use them just for signalling. Such channels are called signal Channels.
@@ -152,6 +194,69 @@ Put simply, you can use a signal channel when you want to inform somebody else a
 * When doing this, it’s good practice to use an empty struct as the type of the channel. 
 * It also has the interesting property of not taking up much space in memory — since an empty struct has no fields inside it.
 
+*Example is combined with channel of channels*
+
+## Channel of Channels
+One simple reason you’d send a chan on a chan is to tell a goroutine to do work and then get an acknowledgement (ack hereafter) that it’s finished doing that work.
+To declare a data type for a channel of channels. You can define a channel of channels using the chan keyword two times in a row, as shown in the following statement:
+
+    c1 := make(chan chan int)
+
+```txt
+
+package main
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+	"time"
+)
+
+#The f channel is a signal channel used for ending the  goroutine when the real work is
+finished.
+func f1(cc chan chan int, f chan bool) {
+	c := make(chan int)
+	cc <- c
+	defer close(c)
+	sum := 0
+	select {
+	case x := <-c:
+		for i := 0; i <= x; i++ {
+			sum = sum + i
+		}
+		c <- sum
+	case <-f:
+		return
+	}
+}
+
+func main() {
+	arguments := os.Args
+	if len(arguments) != 2 {
+		fmt.Println("Need just one integer argument!")
+		return
+	}
+	times, err := strconv.Atoi(arguments[1])
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	cc := make(chan chan int)
+	for i := 1; i < times+1; i++ {
+		f := make(chan bool)
+		go f1(cc, f)
+		ch := <-cc
+		ch <- i
+		for sum := range ch {
+			fmt.Print("Sum(", i, ")=", sum)
+		}
+		fmt.Println()
+		time.Sleep(time.Second)
+		close(f)
+	}
+}
+```
 
 
 
