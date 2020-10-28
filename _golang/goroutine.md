@@ -2,11 +2,14 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-title: Go Routines
+title: Goroutines
 layout: page
-description: This is detailed page having info on channels in golang.
+description: This is detailed page having info on goroutines in golang.
 link: https://botcliq.tech/golang/goroutines/
 ---
+
+[![hackmd-github-sync-badge](https://hackmd.io/hrLAiVI4SAytBq_99s-hVQ/badge)](https://hackmd.io/hrLAiVI4SAytBq_99s-hVQ)
+
 Concurrent programming in many environments is made difficult by the subtleties required to implement correct access to shared variables. Go encourages a different approach in which shared values are passed around on channels and, in fact, never actively shared by separate threads of execution.
 
 * Only one goroutine has access to the value at any given time.
@@ -17,7 +20,10 @@ Concurrent programming in many environments is made difficult by the subtleties 
 
  A  goroutine is a lightweight thread managed by the Go runtime.
  To create a go routine you need to write go just before calling any function.
-` go concurrent(args)`
+ 
+```
+go concurrent(args)
+```
 
 Things to keep in mind:
 * The cost of creating a Goroutine is tiny when compared to a thread. 
@@ -88,13 +94,21 @@ lets see the updated code.
 package main
 
 ```
+package main
+
 import (
     "fmt"
     "sync"
 )
 
-func goroutineFunc(waitgroup *sync.WaitGroup) {
-    fmt.Println("Inside my goroutine")
+func goroutine1 (waitgroup *sync.WaitGroup) {
+    fmt.Println("Inside my goroutine1")
+    waitgroup.Done()
+}
+
+func goroutine2 (waitgroup *sync.WaitGroup) {
+    fmt.Println("Inside my goroutine2")
+    //return
     waitgroup.Done()
 }
 
@@ -103,9 +117,40 @@ func main() {
 
     var waitgroup sync.WaitGroup
     waitgroup.Add(1)
-    go goroutineFunc(&waitgroup)
+    go goroutine1(&waitgroup)
+    waitgroup.Add(1)
+    go goroutine2(&waitgroup)
     waitgroup.Wait()
 
     fmt.Println("Finished Execution")
+}
+```
+
+### Waithing Using Channels
+
+  You can also use channel to block program from exiting.
+  e.g.
+```
+package main
+
+import (
+    "fmt"
+)
+
+func fibonacci(n int, c chan int) {
+    x, y := 0, 1
+    for i := 0; i < n; i++ {
+        c <- x
+        x, y = y, x+y
+    }
+    close(c)
+}
+
+func main() {
+    c := make(chan int, 10)
+    go fibonacci(cap(c), c)
+    for i := range c {
+        fmt.Println(i)
+    }
 }
 ```
